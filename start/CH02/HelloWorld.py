@@ -7,3 +7,7 @@ user_name = input("What is your name? ")
 
 #Say hello to user
 print("Hello " + user_name)
+
+#Say positive affirmation
+print("Today is going to be a great day!")
+
