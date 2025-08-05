@@ -10,7 +10,7 @@ init(autoreset=True)
 
 # SETTINGS
 SETTINGS = {
-    "length": 25, #Password length should be between 4 and 300 characters
+    "length": 100, #Password length should be between 4 and 300 characters
     "lower": True,
     "upper": True,
     "digits": True,
