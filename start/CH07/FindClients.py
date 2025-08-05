@@ -2,8 +2,7 @@
 # Script that scans web server logs for client addresses
 # Use RegEx to find and report on most frequent users
 # By Connor Gronsky on 8/5/2025
-# Import Python modules
-
+# Import Python module
 
 import os
 import re
