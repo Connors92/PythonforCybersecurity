@@ -1,4 +1,39 @@
 #!/usr/bin/env python3
 # Script that scans web server logs for status codes
 # Use RegEx to find and report on most frequent status messages
-# By 
+# By Connor Gronsky on 8/5/2025
+
+import os
+import re
+
+# Prompt for file to analyze
+log_file = input("Which file to analyze? ")
+
+# Get current file directory
+script_path = os.path.abspath(__file__)
+script_dir = os.path.dirname(script_path)
+file_path = os.path.join(script_dir, log_file)
+
+# Open file and load into memory
+with open(file_path, "r") as f:
+    sample_logs = f.readlines()
+
+# Setup regex pattern and empty dictionary
+client_pattern = r'(\s(\d(3))\s)'
+clientdict = {}
+
+# Find match and store in dictionary
+for line in sample_logs:
+    # Search for pattern, and if found move forward
+    m = re.search(client_pattern, line)
+    if m:
+        client = m.group(1)
+        # Put access frequency in dictionary
+        if client in clientdict:
+            clientdict[client] += 1
+        else:
+            clientdict[client] = 1
+
+# Sort by most frequently accessed
+for w in sorted(clientdict, key=clientdict.get, reverse=True):
+    print(w, clientdict[w])
